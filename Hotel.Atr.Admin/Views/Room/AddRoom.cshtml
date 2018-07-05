@@ -1,0 +1,81 @@
+﻿@model HotelAtr.DAL.Model.Room
+@{
+    ViewBag.Title = "AddRoom";
+}
+<h2>AddRoom</h2>
+@using (Html.BeginForm())
+{
+    @*@Html.ValidationSummary()*@
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Тип комнаты</label>
+                <div>
+                    @Html.DropDownListFor(f => Model.RoomTypeId, (List<SelectListItem>)ViewBag.RoomTypeList, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Площадь</label>
+                <div>
+                    @Html.TextBoxFor(f => Model.RoomId, new { @style = "display:none" })
+                    @Html.TextBoxFor(f => f.Square, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Макс. человек</label>
+                <div>
+                    @Html.TextBoxFor(f => f.MaxPersons, new { @class = "form-control", @type = "number" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <label class="control-label">Есть Бесплатный Wifi</label>
+                    @Html.CheckBoxFor(f => f.IsFreeWifi, new { @class = "checkbox" })
+                </div>
+                <div class="form-group">
+                    <label class="control-label">IsPrivateBalcony</label>
+                    @Html.CheckBoxFor(f => f.IsPrivateBalcony, new { @class = "checkbox" })
+
+                </div>
+                <div class="form-group">
+                    <label class="control-label">IsFullAC</label>
+                    @Html.CheckBoxFor(f => f.IsFullAC, new { @class = "checkbox" })
+
+                </div>
+                <div class="form-group">
+                    <label class="control-label">HasTV</label>
+                    @Html.CheckBoxFor(f => f.HasTV, new { @class = "checkbox" })
+
+                </div>
+                <div class="form-group">
+                    <label class="control-label">IsBeachView</label>
+                    @Html.CheckBoxFor(f => f.IsBeachView, new { @class = "checkbox" })
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Floor</label>
+                    @Html.TextBoxFor(f => f.Floor, new { @class = "form-control", @type = "number" })
+                </div>
+
+            </div>
+
+            <button class="btn btn-success" type="submit">
+                @if (Model != null)
+                {
+                    if (Model.RoomId != 0)
+                    {
+                        @:Сохранить
+                    }
+                    else
+                    {
+                        @:Добавить
+                    }
+                }
+                else
+                {
+                    @:Добавить
+                }
+            </button>
+
+        </div>
+    </div>
+}

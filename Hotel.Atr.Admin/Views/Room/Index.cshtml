@@ -1,0 +1,60 @@
+﻿@using HotelAtr.DAL.Model
+@model List<Room>
+@{
+    ViewBag.Title = "Index";
+    string message = ViewBag.Message;
+}
+
+<h2>Список комнат</h2>
+<div class="alert alert-info">
+    <span>@message</span>
+    </div>
+@using (Html.BeginForm("AddRoom", "Room"))
+{
+    <button class="btn btn-primary" type="submit">Добавить</button>
+}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Номер комнаты</th>
+            <th>Тип комнаты</th>
+            <th>Площадь</th>
+            <th>Кол-во человек</th>
+            <th>Этаж</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Room room in Model)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("EditRoom", "Room",new{roomId=room.RoomId})" class="btn btn-info">
+                        @room.RoomId
+                    </a>
+                    <span class="badge
+                       @if (!room.IsFreeWifi)
+                       {
+                           @:badge-danger
+
+                       }
+                       else
+                       {
+                           @:badge-success
+
+                       }">WiFi</span>
+                </td>
+                <td>@room.RoomType.Name</td>
+                <td>@room.Square</td>
+                <td>@room.MaxPersons</td>
+                <td>@room.Floor</td>
+                <td>
+                    <a href="@Url.Action("DeleteRoom", "Room", new {roomId = room.RoomId})" class="btn btn-danger">
+                        Удалить
+                    </a>
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
