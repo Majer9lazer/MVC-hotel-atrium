@@ -73,6 +73,9 @@
       <DependentUpon>HotelAtrEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ServiceRoom.cs" />
+    <Compile Include="Model\SliderArea.cs">
+      <DependentUpon>HotelAtrEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +97,7 @@
       <DependentUpon>HotelAtrEntity.edmx</DependentUpon>
       <LastGenOutput>HotelAtrEntity.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Model\HotelAtrEntity.edmx.sql" />
     <Content Include="Model\HotelAtrEntity.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HotelAtrEntity.edmx</DependentUpon>

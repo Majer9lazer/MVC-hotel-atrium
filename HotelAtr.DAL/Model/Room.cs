@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-
 namespace HotelAtr.DAL.Model
 {
     using System;
@@ -16,7 +14,6 @@ namespace HotelAtr.DAL.Model
     
     public partial class Room
     {
-        [Required]
         public int RoomId { get; set; }
         public int RoomTypeId { get; set; }
         public Nullable<decimal> Square { get; set; }

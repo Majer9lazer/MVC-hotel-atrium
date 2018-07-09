@@ -1,0 +1,54 @@
+﻿@using HotelAtr.DAL.Model
+@model IEnumerable<HotelAtr.DAL.Model.SliderArea>
+
+@{
+    ViewBag.Title = "SliderArea" +
+                    "Index";
+}
+
+<h3>Картинки для слайдеров</h3>
+
+<p>
+    @Html.ActionLink("Создать", "Create", "SliderAreas", new { @class = "btn btn-success" })
+</p>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Header)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Url)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PathImg)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (SliderArea item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Header)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Url)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PathImg)
+            </td>
+            <td class="btn-group-sm">
+                @Html.ActionLink("Edit", "Edit", new { id = item.SliderAreaId }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Details", "Details", new { id = item.SliderAreaId }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.SliderAreaId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

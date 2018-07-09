@@ -13,23 +13,25 @@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    @*<span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    <span class="icon-bar"></span>*@
+                    <h4>
+                    <span class="label label-primary">Меню</span>
+                    </h4>
+                    </button>
+               @*@Html.ActionLink("Меню", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
-
-            @Html.Partial("_Menu");
-
+            @Html.Partial("_Menu")
         </div>
     </div>
-    <div class="container body-content">
+    <div class="body-content">
+        <br style="clear: both" />
         @RenderBody()
         <hr />
         <footer>
-            
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+
+            <p>&copy; @DateTime.Now.Year</p>
         </footer>
     </div>
 

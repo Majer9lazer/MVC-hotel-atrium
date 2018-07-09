@@ -11,26 +11,30 @@ namespace Hotel.Atr.Admin.Controllers
     {
 
         // GET: Room
-        public ActionResult Index(string message="")
+        public ActionResult Index(string message = "")
         {
             ViewBag.Message = message;
             return View(db.Rooms.ToList());
 
         }
-        public ActionResult AddRoom(string action, Room room, int statusCode = -1)
+
+        public ActionResult AddRoom()
         {
             ViewBag.RoomTypeList = db.RoomTypes.Select(s => new SelectListItem()
             {
                 Text = s.Name,
                 Value = s.RoomTypeId.ToString()
             }).ToList();
-            if(action=="Edit")
+            return View();
+        }
+        public ActionResult AddRoomSuccess(Room room)
+        {
             if (room.Square != null)
                 if (ServiceRoom.AddRoom(room))
                     return RedirectToAction("Index", "Room");
 
-            ViewBag.StatusCode = 1;
-            return View();
+         
+            return RedirectToAction("Index", "Room", new {mwssage = "Данные пришли пустымиЫ."});
         }
 
         public ActionResult EditRoom(int roomId)
@@ -40,15 +44,15 @@ namespace Hotel.Atr.Admin.Controllers
             {
                 try
                 {
-                    return RedirectToAction("Index", "Room", new {message = "Данные успешно изменены."});
+                    return RedirectToAction("Index", "Room", new { message = "Данные успешно изменены." });
                 }
                 catch (Exception e)
                 {
-                    return RedirectToAction("Index", "Room", new {message = e.ToString()});
+                    return RedirectToAction("Index", "Room", new { message = e.ToString() });
                 }
             }
 
-            return RedirectToAction("Index", "Room", new {message = "Данные пришли пустыми."});
+            return RedirectToAction("Index", "Room", new { message = "Данные пришли пустыми." });
 
         }
         public ActionResult DeleteRoom(int roomId)

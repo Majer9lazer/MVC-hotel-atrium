@@ -6,9 +6,13 @@
 }
 
 <h2>Список комнат</h2>
-<div class="alert alert-info">
-    <span>@message</span>
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="alert alert-info alert-dismissable fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <span>@message</span>
     </div>
+}
 @using (Html.BeginForm("AddRoom", "Room"))
 {
     <button class="btn btn-primary" type="submit">Добавить</button>
@@ -29,9 +33,12 @@
         {
             <tr>
                 <td>
-                    <a href="@Url.Action("EditRoom", "Room",new{roomId=room.RoomId})" class="btn btn-info">
-                        @room.RoomId
-                    </a>
+                    @*<a href="@Url.Action("EditRoom", "Room",new{roomId=room.RoomId})" class="btn btn-info disabled">
+                        Изиенить
+                    </a>*@
+                        <span class="badge">
+                            @room.RoomId
+                        </span>
                     <span class="badge
                        @if (!room.IsFreeWifi)
                        {

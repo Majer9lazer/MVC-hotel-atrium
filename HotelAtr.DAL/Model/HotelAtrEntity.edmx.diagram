@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="HotelAtrModel.Room" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="HotelAtrModel.RoomType" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
         <AssociationConnector Association="HotelAtrModel.FK_Room_RoomType" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HotelAtrModel.SliderArea" Width="1.75" PointX="4.875" PointY="1.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

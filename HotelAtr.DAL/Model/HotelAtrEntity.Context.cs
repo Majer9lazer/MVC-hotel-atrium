@@ -27,5 +27,6 @@ namespace HotelAtr.DAL.Model
     
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<RoomType> RoomTypes { get; set; }
+        public virtual DbSet<SliderArea> SliderAreas { get; set; }
     }
 }
