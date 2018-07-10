@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Hotel.Atr.Web.Models;
 using HotelAtr.DAL.Model;
 
 namespace Hotel.Atr.Web.Controllers
@@ -10,10 +11,14 @@ namespace Hotel.Atr.Web.Controllers
     public class HomeController : Controller
     {
         private HotelAtrEntities _dbAtrEntities = new HotelAtrEntities();
+        private readonly LayoutModel _model;
+        public HomeController()
+        {
+            _model = new LayoutModel();
+        }
         public ActionResult Index()
         {
-            ViewData["SliderArea"] = _dbAtrEntities.SliderAreas.ToList();
-            return View();
+            return View(_model);
         }
 
         public ActionResult About()

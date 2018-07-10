@@ -1,32 +1,138 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model Hotel.Atr.Web.Models.LayoutModel
+@{
+    ViewBag.Title = "Главная страница";
 }
-<!-- #region Asp.NET Info -->
-<div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-    </div>
+<!-- Background Area Start -->
+@Html.Partial("_SliderAreaPartial", Model.SliderAreas)
+<!-- Background Area End -->
+<!-- About Us Area Start -->
+<section class="about-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form action="#" method="post" class="search-form">
+                    <div class="form-container fix">
+                        <div class="box-select">
+                            <div class="select date">
+                                <select name="arrive">
+                                    <option>ARRIVE DATE</option>
+                                    <option>10 JAN</option>
+                                    <option>18 JAN</option>
+                                    <option>21 JAN</option>
+                                    <option>10 FEB</option>
+                                    <option>28 FEB</option>
+                                    <option>08 MAR</option>
+                                    <option>19 APR</option>
+                                </select>
+                            </div>
+                            <div class="select date">
+                                <select name="departure">
+                                    <option>DEPARTURE DATE</option>
+                                    <option>13 FEB</option>
+                                    <option>22 JAN</option>
+                                    <option>26 JAN</option>
+                                    <option>15 FEB</option>
+                                    <option>02 MAR</option>
+                                    <option>12 MAR</option>
+                                    <option>23 APR</option>
+                                </select>
+                            </div>
+                            <div class="select arrow">
+                                <select name="adults">
+                                    <option>ADULTS</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                </select>
+                            </div>
+                            <div class="select arrow">
+                                <select name="children">
+                                    <option>CHILDREN</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="search default-btn">Check Availability</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                <div class="video-wrapper mt-90">
+                    <div class="video-overlay">
+                        <img src="/Content/img/banner/4.jpg" alt="">
+                    </div>
+                    <a class="video-popup" href="https://www.youtube.com/watch?v=rXcp6s0VjZk">
+                        <i class="zmdi zmdi-play-circle-outline"></i>
+                    </a>
+                </div>
+            </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
         </div>
     </div>
-<!-- #endregion -->
+</section>
+<!-- About Us Area End -->
+<!-- Room Area Start -->
+@Html.Partial("_RoomAreaPartial", Model.RoomTypes)
+<!-- Room Area End -->
+<!-- Services Area Start -->
+@Html.Partial("_ServicesAreaPartial", Model.Services)
+<!-- Services Area End -->
+<!-- Fun Factor Area Start -->
+<section class="fun-factor-area bg-1 overlay-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-3">
+                <div class="single-fun-factor text-center">
+                    <h1><span class="counter">112</span></h1>
+                    <h4>new friendships</h4>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3">
+                <div class="single-fun-factor text-center">
+                    <h1><span class="counter">158</span></h1>
+                    <h4>five start ratings</h4>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3">
+                <div class="single-fun-factor text-center">
+                    <h1><span class="counter">430</span></h1>
+                    <h4>international guests</h4>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3">
+                <div class="single-fun-factor text-center">
+                    <h1><span class="counter">745</span></h1>
+                    <h4>served breakfast</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Fun Factor Area End -->
+<!-- Gallery Area Start -->
+@Html.Partial("_GalleryAreaPartial")
+<!-- Gallery Area End -->
+<!-- Advertise Area Start -->
+<section class="advertise-area bg-2 overlay-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="advertise-text">
+                    <h1>get <span>15% off</span> on any other events... </h1>
+                    <a href="#" class="default-btn">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Advertise Area End -->

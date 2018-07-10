@@ -72,6 +72,9 @@
     <Compile Include="Model\RoomType.cs">
       <DependentUpon>HotelAtrEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Service.cs">
+      <DependentUpon>HotelAtrEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\ServiceRoom.cs" />
     <Compile Include="Model\SliderArea.cs">
       <DependentUpon>HotelAtrEntity.tt</DependentUpon>

@@ -1,9 +1,9 @@
 ﻿@using HotelAtr.DAL.Model
-
+@model IEnumerable<SliderArea>
 <section class="slider-area">
     <div class="slider-wrapper">
-        @foreach (SliderArea item in (List<SliderArea>) ViewData["SliderArea"])
-        {
+        @foreach (SliderArea item in Model)
+            {
             <div class="single-slide" style="background-image: url('/Content/img/slider/1.jpg');">
                 <div class="banner-content overlay">
                     <div class="container">
