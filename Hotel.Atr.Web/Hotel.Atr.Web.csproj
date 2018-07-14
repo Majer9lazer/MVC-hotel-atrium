@@ -300,6 +300,12 @@
     <Content Include="Content\img\room\s-3.jpg" />
     <Content Include="Content\img\room\s-4.jpg" />
     <Content Include="Content\img\room\s-5.jpg" />
+    <Content Include="Content\img\service\restaurent-hover.png" />
+    <Content Include="Content\img\service\restaurent.png" />
+    <Content Include="Content\img\service\spa-hover.png" />
+    <Content Include="Content\img\service\spa.png" />
+    <Content Include="Content\img\service\swim-hover.png" />
+    <Content Include="Content\img\service\swim.png" />
     <Content Include="Content\img\sidebar\1.jpg" />
     <Content Include="Content\img\sidebar\2.jpg" />
     <Content Include="Content\img\sidebar\3.jpg" />
@@ -364,7 +370,7 @@
     <Content Include="fonts\fontawesome-webfont3e6e.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Views\Home\location.html" />
-    <Content Include="Views\Home\room-details.html" />
+    <None Include="Views\Room\roomDetails.cshtml" />
     <Content Include="Views\Home\room-grid.html" />
     <Content Include="Views\Home\room-list.html" />
     <Content Include="style.css" />

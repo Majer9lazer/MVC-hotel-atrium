@@ -14,13 +14,14 @@ namespace Hotel.Atr.Web.Models
         public List<RoomType> RoomTypes;
         public List<SliderArea> SliderAreas;
         public List<Service> Services;
-
+        public Random Rnd;
         public LayoutModel()
         {
             Rooms = _dbEntities.Rooms.ToList();
             SliderAreas = _dbEntities.SliderAreas.ToList();
             RoomTypes = _dbEntities.RoomTypes.ToList();
             Services = _dbEntities.Services.ToList();
+            Rnd = new Random();
         }
 
     }

@@ -1,6 +1,12 @@
 ﻿@using HotelAtr.DAL.Model
 @model IEnumerable<HotelAtr.DAL.Model.RoomType>
-<section class="room-area pt-90">
+@{
+    string path = new DirectoryInfo(Server.MapPath("~/Content/img/room")).FullName;
+    DirectoryInfo info = new DirectoryInfo(path);
+    List<string> files = info.GetFiles().Select(s => s.Name).ToList();
+    Random rnd = new Random();
+}
+<section class="room-area pt-90" id="areaRoomSection">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -15,20 +21,23 @@
         @foreach (RoomType roomType in Model)
         {
             <div class="single-room medium">
-                <img src="@roomType.Imagepath" alt="" width="440" height="600">
+                <img src="@if(string.IsNullOrEmpty(roomType.Imagepath))
+                {
+                    int randomNumber = rnd.Next(0, files.Count);
+                    string file = files.ElementAt(randomNumber);
+                    roomType.Imagepath="~/Content/img/room/" + file;
+                    files.RemoveAt(randomNumber);
+                }@roomType.Imagepath" alt="" width="420" height="304">
                 <div class="room-hover text-center">
                     <div class="hover-text">
                         <h3>
-                            <a href="room-details.html">@roomType.Name</a>
+                            <span> @roomType.Name</span>
                         </h3>
-
                         <p>@roomType.RoomTypeDescription</p>
-
                         <div class="room-btn">
-                            <a href="room-details.html" class="default-btn">DETAILS</a>
+                            <a href="@roomType.Imagepath" class="default-btn">DETAILS</a>
                         </div>
                     </div>
-
                     <div class="p-amount">
                         <span>$@roomType.Price</span>
                         <span class="count">Per Night</span>
@@ -38,79 +47,78 @@
 
         }
         <!-- #region template -->
-
         @*<div class="single-room small">
-            <img src="/Content/img/room/1.jpg" alt="">
-            <div class="room-hover text-center">
-                <div class="hover-text">
-                    <h3>
-                        <a href="room-details.html">Royal Suit</a>
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
-                    <div class="room-btn">
-                        <a href="room-details.html" class="default-btn">DETAILS</a>
+                <img src="~/Content/img//room/1.jpg" alt="">
+                <div class="room-hover text-center">
+                    <div class="hover-text">
+                        <h3>
+                            <a href="room-details.html">Royal Suit</a>
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                        <div class="room-btn">
+                            <a href="room-details.html" class="default-btn">DETAILS</a>
+                        </div>
+                    </div>
+                    <div class="p-amount">
+                        <span>$220</span>
+                        <span class="count">Per Night</span>
                     </div>
                 </div>
-                <div class="p-amount">
-                    <span>$220</span>
-                    <span class="count">Per Night</span>
-                </div>
             </div>
-        </div>
-        <div class="single-room large">
-            <img src="~/Content/img/room/2.jpg" alt="">
-            <div class="room-hover text-center">
-                <div class="hover-text">
-                    <h3>
-                        <a href="room-details.html">Deluxe Suit</a>
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
-                    <div class="room-btn">
-                        <a href="room-details.html" class="default-btn">DETAILS</a>
+            <div class="single-room large">
+                <img src="~/Content/img/room/2.jpg" alt="">
+                <div class="room-hover text-center">
+                    <div class="hover-text">
+                        <h3>
+                            <a href="room-details.html">Deluxe Suit</a>
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                        <div class="room-btn">
+                            <a href="room-details.html" class="default-btn">DETAILS</a>
+                        </div>
+                    </div>
+                    <div class="p-amount">
+                        <span>$150</span>
+                        <span class="count">Per Night</span>
                     </div>
                 </div>
-                <div class="p-amount">
-                    <span>$150</span>
-                    <span class="count">Per Night</span>
-                </div>
             </div>
-        </div>
-        <div class="single-room small">
-            <img src="~/Content/img/room/3.jpg" alt="">
-            <div class="room-hover text-center">
-                <div class="hover-text">
-                    <h3>
-                        <a href="room-details.html">Single Room</a>
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
-                    <div class="room-btn">
-                        <a href="room-details.html" class="default-btn">DETAILS</a>
+            <div class="single-room small">
+                <img src="~/Content/img/room/3.jpg" alt="">
+                <div class="room-hover text-center">
+                    <div class="hover-text">
+                        <h3>
+                            <a href="room-details.html">Single Room</a>
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                        <div class="room-btn">
+                            <a href="room-details.html" class="default-btn">DETAILS</a>
+                        </div>
+                    </div>
+                    <div class="p-amount">
+                        <span>$120</span>
+                        <span class="count">Per Night</span>
                     </div>
                 </div>
-                <div class="p-amount">
-                    <span>$120</span>
-                    <span class="count">Per Night</span>
-                </div>
             </div>
-        </div>
-        <div class="single-room medium">
-            <img src="~/Content/img/room/4.jpg" alt="">
-            <div class="room-hover text-center">
-                <div class="hover-text">
-                    <h3>
-                        <a href="room-details.html">Double Room</a>
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
-                    <div class="room-btn">
-                        <a href="room-details.html" class="default-btn">DETAILS</a>
+            <div class="single-room medium">
+                <img src="~/Content/img/room/4.jpg" alt="">
+                <div class="room-hover text-center">
+                    <div class="hover-text">
+                        <h3>
+                            <a href="room-details.html">Double Room</a>
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                        <div class="room-btn">
+                            <a href="room-details.html" class="default-btn">DETAILS</a>
+                        </div>
+                    </div>
+                    <div class="p-amount">
+                        <span>$100</span>
+                        <span class="count">Per Night</span>
                     </div>
                 </div>
-                <div class="p-amount">
-                    <span>$100</span>
-                    <span class="count">Per Night</span>
-                </div>
-            </div>
-        </div>*@
+            </div>*@
         <!-- #endregion -->
     </div>
 </section>

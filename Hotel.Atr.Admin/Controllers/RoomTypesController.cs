@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HotelAtr.DAL.Model;
+using WebGrease.Activities;
 
 namespace Hotel.Atr.Admin.Controllers
 {
-    public class RoomTypesController : Controller
+    public class RoomTypesController : BaseController
     {
-        private HotelAtrEntities db = new HotelAtrEntities();
 
         // GET: RoomTypes
         public async Task<ActionResult> Index()
@@ -42,20 +44,32 @@ namespace Hotel.Atr.Admin.Controllers
             return View();
         }
 
-        // POST: RoomTypes/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "RoomTypeId,Name")] RoomType roomType)
+        public async Task<ActionResult> Create([Bind(Include = "RoomTypeId,Name,RoomTypeDescription,Price,Imagepath")] RoomType roomType, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
-                db.RoomTypes.Add(roomType);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
+                try
+                {
+                    if (!string.IsNullOrEmpty(file.FileName))
+                    {
+                        string path = Path.Combine(new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).Parent?.FullName + @"\Hotel.Atr.Web\Content\img\room", Path.GetFileName(file.FileName));
+                        if (!System.IO.File.Exists(path))
+                            file.SaveAs(path);
+                        roomType.Imagepath = Path.Combine(@"\Content\img\room", Path.GetFileName(file.FileName));
 
+                        db.RoomTypes.Add(roomType);
+                        await db.SaveChangesAsync();
+                        return RedirectToAction("Index");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e);
+                }
+                return View(roomType);
+            }
             return View(roomType);
         }
 
@@ -79,7 +93,7 @@ namespace Hotel.Atr.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "RoomTypeId,Name")] RoomType roomType)
+        public async Task<ActionResult> Edit([Bind(Include = "RoomTypeId,Name,RoomTypeDescription,Price,Imagepath")] RoomType roomType)
         {
             if (ModelState.IsValid)
             {

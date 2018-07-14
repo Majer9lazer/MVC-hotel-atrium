@@ -1,0 +1,144 @@
+﻿@model HotelAtr.DAL.Model.Room
+
+@{
+    ViewBag.Title = "Подробное описание | комнаты";
+}
+
+
+<div>
+    <h4>@ViewBag.Title</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Square)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Square)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxPersons)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxPersons)
+        </dd>
+
+        <dt>
+            <span class="badge
+                  @if (Model.IsFreeWifi)
+                  {
+                      @:badge-success
+                  }
+                  else
+                  {
+                      @:badge-secondary
+                  }">
+                @Html.DisplayNameFor(model => model.IsFreeWifi)
+            </span>
+
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsFreeWifi)
+        </dd>
+
+        <dt>
+            <span class="badge
+                  @if (Model.IsPrivateBalcony)
+                  {
+                      @:badge-success
+                  }
+                  else
+                  {
+                      @:badge-secondary
+                  }">
+                @Html.DisplayNameFor(model => model.IsPrivateBalcony)
+            </span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsPrivateBalcony)
+        </dd>
+
+        <dt>
+            <span class="badge
+                  @if (Model.IsFullAC)
+                  {
+                      @:badge-success
+                  }
+                  else
+                  {
+                      @:badge-secondary
+                  }">
+                @Html.DisplayNameFor(model => model.IsFullAC)
+            </span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsFullAC)
+        </dd>
+
+        <dt>
+
+            @Html.DisplayNameFor(model => model.Floor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Floor)
+        </dd>
+
+        <dt>
+            <span class="badge
+                  @if (Model.HasTV)
+                  {
+                      @:badge-success
+                  }
+                  else
+                  {
+                      @:badge-secondary
+                  }">
+                @Html.DisplayNameFor(model => model.HasTV)
+            </span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HasTV)
+        </dd>
+
+        <dt>
+            <span class="badge
+                  @if (Model.IsBeachView)
+                  {
+                      @:badge-success
+                  }
+                  else
+                  {
+                      @:badge-secondary
+                  }">
+                @Html.DisplayNameFor(model => model.IsBeachView)
+            </span>
+
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsBeachView)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomType.Name)
+        </dd>
+
+    </dl>
+</div>
+<div class="btn-toolbar">
+    <div class="btn-group">
+        @Html.ActionLink("Изменить", "Edit", new { roomId = Model.RoomId }, new { @class = "btn btn-outline-info" })
+        @Html.ActionLink("Обратно к списку", "Index", null, new { @class = "btn btn-outline-primary" })
+    </div>
+</div>

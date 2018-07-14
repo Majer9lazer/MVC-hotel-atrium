@@ -2,33 +2,45 @@
 @model IEnumerable<RoomType>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Список типов комнаты";
 }
 
-<h2>Типы комнат</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Создать новый тип комнаты", "Create",null,htmlAttributes:new{@class="btn btn-primary"})
+    @Html.ActionLink("Создать новый тип комнаты", "Create", "RoomTypes", htmlAttributes: new { @class = "btn btn-primary" })
 </p>
-<table class="table table-hover">
+<table class="table table-hover table-bordered">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Наименование типа
+        </th>
+        <th>
+            Цена
         </th>
         <th></th>
     </tr>
 
-@foreach (RoomType item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.RoomTypeId }, new { @class = "btn btn-primary" })
-            @Html.ActionLink("Details", "Details", new { id = item.RoomTypeId }, new { @class = "btn btn-info" })
-            @Html.ActionLink("Delete", "Delete", new { id = item.RoomTypeId }, new { @class = "btn btn-danger" })
-        </td>
-    </tr>
-}
-
+    @foreach (RoomType item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group mr-2">
+                    @Html.ActionLink("Изменить", "Edit", new { id = item.RoomTypeId }, new { @class = "btn btn-primary" })
+                </div>
+                <div class="btn-group mr-2">
+                    @Html.ActionLink("Посмотреть детали", "Details", new { id = item.RoomTypeId }, new { @class = "btn btn-info" })
+                </div>
+                <div class="btn-group">
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.RoomTypeId }, new { @class = "btn btn-danger" })
+                </div>
+            </td>
+        </tr>
+    }
 </table>

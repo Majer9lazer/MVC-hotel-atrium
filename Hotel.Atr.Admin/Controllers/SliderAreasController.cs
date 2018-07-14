@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
@@ -45,18 +46,41 @@ namespace Hotel.Atr.Admin.Controllers
         // POST: SliderAreas/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "SliderAreaId,Header,Description,Url,PathImg")] SliderArea sliderArea)
+        public async Task<ActionResult> Create([Bind(Include = "SliderAreaId,Header,Description,Url,PathImg")] SliderArea sliderArea, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
-                db.SliderAreas.Add(sliderArea);
-                await db.SaveChangesAsync();
+                try
+                {
+                    if (!string.IsNullOrEmpty(file?.FileName))
+                    {
+                        if (string.IsNullOrEmpty(sliderArea.Url))
+                            sliderArea.Url = file.FileName;
+
+                        string path = Path.Combine(new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).Parent?.FullName + @"\Hotel.Atr.Web\Content\img\slider", Path.GetFileName(file.FileName));
+                        if (!System.IO.File.Exists(path))
+                            file.SaveAs(path);
+
+                        sliderArea.PathImg = Path.Combine(@"Content\img\slider", Path.GetFileName(file.FileName));
+
+                        db.SliderAreas.Add(sliderArea);
+                        await db.SaveChangesAsync();
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+
                 return RedirectToAction("Index");
             }
 
-            return View(sliderArea);
+            return View();
+            //sliderArea
         }
 
         // GET: SliderAreas/Edit/5

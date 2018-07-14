@@ -6,6 +6,7 @@
 @Html.Partial("_SliderAreaPartial", Model.SliderAreas)
 <!-- Background Area End -->
 <!-- About Us Area Start -->
+
 <section class="about-area">
     <div class="container">
         <div class="row">
@@ -69,7 +70,7 @@
             <div class="col-md-7">
                 <div class="video-wrapper mt-90">
                     <div class="video-overlay">
-                        <img src="/Content/img/banner/4.jpg" alt="">
+                        <img src="/Content/img//banner/4.jpg" alt="">
                     </div>
                     <a class="video-popup" href="https://www.youtube.com/watch?v=rXcp6s0VjZk">
                         <i class="zmdi zmdi-play-circle-outline"></i>
@@ -93,25 +94,25 @@
         <div class="row">
             <div class="col-md-3 col-sm-3">
                 <div class="single-fun-factor text-center">
-                    <h1><span class="counter">112</span></h1>
+                    <h1><span class="counter">@Model.Rnd.Next(112, 1000)</span></h1>
                     <h4>new friendships</h4>
                 </div>
             </div>
             <div class="col-md-3 col-sm-3">
                 <div class="single-fun-factor text-center">
-                    <h1><span class="counter">158</span></h1>
+                    <h1><span class="counter">@Model.Rnd.Next(158, 1000)</span></h1>
                     <h4>five start ratings</h4>
                 </div>
             </div>
             <div class="col-md-3 col-sm-3">
                 <div class="single-fun-factor text-center">
-                    <h1><span class="counter">430</span></h1>
+                    <h1><span class="counter">@Model.Rnd.Next(430, 10000)</span></h1>
                     <h4>international guests</h4>
                 </div>
             </div>
             <div class="col-md-3 col-sm-3">
                 <div class="single-fun-factor text-center">
-                    <h1><span class="counter">745</span></h1>
+                    <h1><span class="counter">@Model.Rnd.Next(745, 100000)</span></h1>
                     <h4>served breakfast</h4>
                 </div>
             </div>
@@ -122,17 +123,3 @@
 <!-- Gallery Area Start -->
 @Html.Partial("_GalleryAreaPartial")
 <!-- Gallery Area End -->
-<!-- Advertise Area Start -->
-<section class="advertise-area bg-2 overlay-dark">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="advertise-text">
-                    <h1>get <span>15% off</span> on any other events... </h1>
-                    <a href="#" class="default-btn">Book Now</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Advertise Area End -->

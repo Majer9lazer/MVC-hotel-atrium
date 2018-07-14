@@ -4,7 +4,7 @@
     <div class="slider-wrapper">
         @foreach (SliderArea item in Model)
             {
-            <div class="single-slide" style="background-image: url('/Content/img/slider/1.jpg');">
+            <div class="single-slide"  style="background-image: url(@item.PathImg.Replace(@"\","/"))">
                 <div class="banner-content overlay">
                     <div class="container">
                         <div class="row">

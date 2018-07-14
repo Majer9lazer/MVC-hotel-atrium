@@ -9,22 +9,16 @@
     @RenderSection("style", required: false)
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    @*<span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>*@
-                    <h4>
-                    <span class="label label-primary">Меню</span>
-                    </h4>
-                    </button>
-               @*@Html.ActionLink("Меню", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
-            </div>
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+        @*<a class="navbar-brand" href="#">
+                <img src="https://image.flaticon.com/icons/svg/967/967661.svg" width="30" height="30" class="d-inline-block align-top" alt="&Psi;">
+            </a>*@
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             @Html.Partial("_Menu")
-        </div>
-    </div>
+       
+    </nav>
     <div class="body-content">
         <br style="clear: both" />
         @RenderBody()

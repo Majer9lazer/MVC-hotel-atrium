@@ -1,5 +1,10 @@
 ﻿@using HotelAtr.DAL.Model
 @model IEnumerable<Service>
+@{
+    string path = new DirectoryInfo(Server.MapPath("~/Content/img/service")).FullName;
+    DirectoryInfo info = new DirectoryInfo(path);
+    List<string> files = info.GetFiles().Where(w => w.Extension.Contains("png")).Select(s => s.Name).ToList();
+}
 <section class="services-area ptb-90">
     <div class="container">
         <div class="row">
@@ -10,33 +15,68 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-5">
-                <!-- Nav tabs -->
-                <ul role="tablist" class="nav nav-tabs">
-                    @foreach (Service service in Model)
-                    {
-                        <li role="presentation">
-                            <a data-toggle="tab" role="tab" aria-controls="@service.ServiceId" href="#tab_@service.ServiceId" aria-expanded="true">
-                                <span class="image p-img"><img src="@service.ServiceIconPath" alt=""></span>
-                                <span class="image s-img"><img src="@service.ServiceIconPath.Replace(".png","-hover.png")" alt=""></span>
-                                <span class="title">@service.ServiceName</span>
-                                <span class="text">@service.ServiceDescription</span>
-                            </a>
-                        </li>
-                    }
-                </ul>
-            </div>
-            <div class="col-md-7">
-                <div class="tab-content">
-                    @foreach (Service service in Model)
-                    {
-                        <div id="tab_@service.ServiceId" class="tab-pane" role="tabpanel">
-                            <img src="~@service.ServiceImagePath" alt="">
-                        </div>
-                    }
+        @if (!Model.Any())
+        {
+            @*<div class="row">
+                <div class="col-md-5">
+                    <ul role="tablist" class="nav nav-tabs">
+
+                        @foreach (string s in files.Where(s => !s.Contains("-hover.png")))
+                        {
+                            <li role="presentation">
+                                <a data-toggle="tab" role="tab" aria-controls="@s" href="#serviceImage_@s" aria-expanded="true">
+                                    <span class="image p-img"><img src="~/Content/img/service/@s" alt=""></span>
+                                    <span class="image s-img"><img src="~/Content/img/service/@s.Replace(".png", "-hover.png")" alt=""></span>
+                                    <span class="title">@s.Replace(".png", "")</span>
+                                </a>
+
+                            </li>
+
+                        }
+                    </ul>
+                </div>
+                <div class="col-md-7">
+                    <div class="tab-content">
+                        @foreach (string s in files)
+                        {
+                            <div class="tab-pane" id="serviceImage_@s" role="tabpanel">
+                                <img src="~/Content/img/service/@s" alt="">
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>*@
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-5">
+                    <!-- Nav tabs -->
+                    <ul role="tablist" class="nav nav-tabs">
+                        @foreach (Service service in Model.OrderBy(o => o.ServiceId))
+                        {
+                            <li role="presentation">
+                                <a data-toggle="tab" role="tab" aria-controls="@service.ServiceId" href="#tab_@service.ServiceId" aria-expanded="true">
+                                    <span class="image p-img"><img src="@service.ServiceIconPath" alt=""></span>
+                                    <span class="image s-img"><img src="@service.ServiceIconPath.Replace(".png", "-hover.png")" alt=""></span>
+                                    <span class="title">@service.ServiceName</span>
+                                    <span class="text">@service.ServiceDescription</span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="col-md-7">
+                    <div class="tab-content">
+                        @foreach (Service service in Model.OrderBy(o => o.ServiceId))
+                        {
+                            <div id="tab_@service.ServiceId" class="tab-pane" role="tabpanel">
+                                <img src="~@service.ServiceImagePath" alt="">
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
+        }
     </div>
 </section>

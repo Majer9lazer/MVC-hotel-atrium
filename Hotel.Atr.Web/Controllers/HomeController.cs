@@ -34,5 +34,10 @@ namespace Hotel.Atr.Web.Controllers
 
             return View();
         }
+
+        //public ActionResult RoomDetails()
+        //{
+        //    return View("roomDetails");
+        //}
     }
 }

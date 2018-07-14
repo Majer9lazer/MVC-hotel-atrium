@@ -44,7 +44,11 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.SliderAreaId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group mr-2">
+        @Html.ActionLink("Изменить", "Edit", new { id = Model.SliderAreaId }, new { @class = "btn btn-primary" })
+    </div>
+    <div class="btn-group">
+        @Html.ActionLink("Обратно к списку", "Index", null, new { @class = "btn btn-outline-dark" })
+    </div>
+</div>

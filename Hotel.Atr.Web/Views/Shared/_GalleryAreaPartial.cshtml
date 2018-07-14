@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="section-title text-center">
-                    <h3>our gallery</h3>
+                    <h3>Наша галерея</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellente sque vel volutpat felis, eu condimentum massa. Pellentesque mollis eros vel mattis tempor. Aliquam </p>
                 </div>
             </div>
@@ -12,13 +12,13 @@
     <div class="gallery-container">
         <div class="gallery-filter">
             <button data-filter="*" class="active"> All</button>
-            <button data-filter=".spa">Spa</button>
-            <button data-filter=".restaurent">Restaurent</button>
+            <button data-filter="#spa">Spa</button>
+            <button data-filter="#restaurent">Restaurent</button>
             <button data-filter=".gym">Gym</button>
             <button data-filter=".hotel">Hotel</button>
         </div>
         <div class="gallery gallery-masonry">
-            <div class="gallery-item spa gym">
+            <div class="gallery-item gym" id="spa">
                 <div class="thumb">
                     <img src="~/Content/img/gallery/1.jpg" alt="">
                 </div>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            <div class="gallery-item restaurent hotel">
+            <div class="gallery-item hotel" id="restaurent">
                 <div class="thumb">
                     <img src="~/Content/img/gallery/2.jpg" alt="">
                 </div>

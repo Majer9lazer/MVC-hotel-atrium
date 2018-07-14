@@ -1,8 +1,10 @@
-﻿@{
+﻿@using HotelAtr.DAL.Model
+@model IEnumerable<Room>
+@{
     ViewBag.Title = "Index";
     Layout = "../Shared/_LayoutArticle.cshtml";
 }
- <!-- Breadcrumb Area Start-->
+<!-- Breadcrumb Area Start-->
 <section class="breadcrumb-area overlay-dark-2 bg-3">
     <div class="container">
         <div class="row">
@@ -12,7 +14,7 @@
                     <p>A quality room of hotel ATR with sea or mountain view</p>
                     <div class="breadcrumb-bar">
                         <ul class="breadcrumb">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="#">Home</a></li>
                             <li>Room - list view</li>
                         </ul>
                     </div>
@@ -29,7 +31,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="section-title text-center">
                     <h3>our atr rooms</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellente sque vel volutpat felis, eu condimentum massa. Pellentesque mollis eros vel mattis tempor. Aliquam </p>
+                    <p>Здесь будет подробное описание комнат</p>
                 </div>
             </div>
         </div>
@@ -37,144 +39,159 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="room-list">
-                    <div class="row">
-                        <div class="col-md-5 col-sm-6">
-                            <a href="#"><img src="/Content/img/room/10.jpg" alt=""></a>
+                @if (Model != null)
+                {
+                    foreach (Room room in Model)
+                    {
+                        <div class="room-list">
+                            <div class="row">
+                                <div class="col-md-5 col-sm-6">
+                                    <a href="@Url.Action("RoomDetails", "Room", new {roomId = room.RoomId})">
+                                        <img src="@room.RoomType.Imagepath" height="303" width="420" alt="">
+                                    </a>
+                                </div>
+                                <div class="col-md-7 col-sm-6">
+                                    <div class="room-list-text">
+                                        <h3>
+                                            <a href="@Url.Action("RoomDetails", "Room", new {roomId = room.RoomId})">Номер комнаты - @room.RoomId</a>
+                                        </h3>
+                                        <p>Тип - @room.RoomType.Name</p>
+                                        <p>@room.RoomType.RoomTypeDescription</p>
+                                        <h4>Оснащение номеров</h4>
+                                        <div class="room-service">
+                                            <div class="room-facilities">
+                                                @foreach (string item in room.GetType().GetProperties()
+                                                    .Where(s => s.PropertyType == typeof(bool) && (bool)s.GetValue(room))
+                                                    .Select(s => s.Name).ToList())
+                                                {
+                                                    <span>
+                                                        <i class="zmdi zmdi-check"></i>
+                                                        @item
+                                                    </span>
+
+                                                }
+
+                                            </div>
+                                            <div class="p-amount">
+                                                <span>@room.RoomType.Price</span>
+                                                <span class="count">Per Night</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-7 col-sm-6">
-                            <div class="room-list-text">
-                                <h3><a href="#">Single Room</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod hytt tempor incididuc utd labore et dolore magna aliqua. Ut enim ad minim yttveniam, quis nostrud exercitation csdd ullamco laboris  ed do eiusmod hytt </p>
-                                <h4>Room Facility</h4>
-                                <div class="room-service">
-                                    <p>Breakfast Include , Free wi-fi , Private Balcony , Free Newspaper , Full AC, Beach View , Sweeming Pool</p>
-                                    <div class="p-amount">
-                                        <span>$220</span>
-                                        <span class="count">Per Night</span>
+                    }
+                }
+                <!-- #region RoomList Template -->
+                @*<div class="room-list">
+                        <div class="row">
+                            <div class="col-md-5 col-sm-6">
+                                <a href="#"><img src="/Content/img/room/11.jpg" alt=""></a>
+                            </div>
+                            <div class="col-md-7 col-sm-6">
+                                <div class="room-list-text">
+                                    <h3><a href="#">Royal Suit</a></h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod hytt tempor incididuc utd labore et dolore magna aliqua. Ut enim ad minim yttveniam, quis nostrud exercitation csdd ullamco laboris ed do eiusmod hytt </p>
+                                    <h4>Room Facility</h4>
+                                    <div class="room-service">
+                                        <p>Breakfast Include , Free wi-fi , Private Balcony , Free Newspaper , Full AC, Beach View , Sweeming Pool</p>
+                                        <div class="p-amount">
+                                            <span>$550</span>
+                                            <span class="count">Per Night</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="room-list">
-                    <div class="row">
-                        <div class="col-md-5 col-sm-6">
-                            <a href="#"><img src="/Content/img/room/11.jpg" alt=""></a>
-                        </div>
-                        <div class="col-md-7 col-sm-6">
-                            <div class="room-list-text">
-                                <h3><a href="#">Royal Suit</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod hytt tempor incididuc utd labore et dolore magna aliqua. Ut enim ad minim yttveniam, quis nostrud exercitation csdd ullamco laboris  ed do eiusmod hytt </p>
-                                <h4>Room Facility</h4>
-                                <div class="room-service">
-                                    <p>Breakfast Include , Free wi-fi , Private Balcony , Free Newspaper , Full AC, Beach View , Sweeming Pool</p>
-                                    <div class="p-amount">
-                                        <span>$550</span>
-                                        <span class="count">Per Night</span>
+                    <div class="room-list">
+                        <div class="row">
+                            <div class="col-md-5 col-sm-6">
+                                <a href="#"><img src="/Content/img/room/12.jpg" alt=""></a>
+                            </div>
+                            <div class="col-md-7 col-sm-6">
+                                <div class="room-list-text">
+                                    <h3><a href="#">Delux Suit</a></h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod hytt tempor incididuc utd labore et dolore magna aliqua. Ut enim ad minim yttveniam, quis nostrud exercitation csdd ullamco laboris ed do eiusmod hytt </p>
+                                    <h4>Room Facility</h4>
+                                    <div class="room-service">
+                                        <p>Breakfast Include , Free wi-fi , Private Balcony , Free Newspaper , Full AC, Beach View , Sweeming Pool</p>
+                                        <div class="p-amount">
+                                            <span>$200</span>
+                                            <span class="count">Per Night</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="room-list">
-                    <div class="row">
-                        <div class="col-md-5 col-sm-6">
-                            <a href="#"><img src="/Content/img/room/12.jpg" alt=""></a>
-                        </div>
-                        <div class="col-md-7 col-sm-6">
-                            <div class="room-list-text">
-                                <h3><a href="#">Delux Suit</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod hytt tempor incididuc utd labore et dolore magna aliqua. Ut enim ad minim yttveniam, quis nostrud exercitation csdd ullamco laboris  ed do eiusmod hytt </p>
-                                <h4>Room Facility</h4>
-                                <div class="room-service">
-                                    <p>Breakfast Include , Free wi-fi , Private Balcony , Free Newspaper , Full AC, Beach View , Sweeming Pool</p>
-                                    <div class="p-amount">
-                                        <span>$200</span>
-                                        <span class="count">Per Night</span>
+                    <div class="room-list">
+                        <div class="row">
+                            <div class="col-md-5 col-sm-6">
+                                <a href="#"><img src="/Content/img/room/13.jpg" alt=""></a>
+                            </div>
+                            <div class="col-md-7 col-sm-6">
+                                <div class="room-list-text">
+                                    <h3><a href="#">Double Room</a></h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod hytt tempor incididuc utd labore et dolore magna aliqua. Ut enim ad minim yttveniam, quis nostrud exercitation csdd ullamco laboris ed do eiusmod hytt </p>
+                                    <h4>Room Facility</h4>
+                                    <div class="room-service">
+                                        <p>Breakfast Include , Free wi-fi , Private Balcony , Free Newspaper , Full AC, Beach View , Sweeming Pool</p>
+                                        <div class="p-amount">
+                                            <span>$190</span>
+                                            <span class="count">Per Night</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="room-list">
-                    <div class="row">
-                        <div class="col-md-5 col-sm-6">
-                            <a href="#"><img src="/Content/img/room/13.jpg" alt=""></a>
-                        </div>
-                        <div class="col-md-7 col-sm-6">
-                            <div class="room-list-text">
-                                <h3><a href="#">Double Room</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod hytt tempor incididuc utd labore et dolore magna aliqua. Ut enim ad minim yttveniam, quis nostrud exercitation csdd ullamco laboris  ed do eiusmod hytt </p>
-                                <h4>Room Facility</h4>
-                                <div class="room-service">
-                                    <p>Breakfast Include , Free wi-fi , Private Balcony , Free Newspaper , Full AC, Beach View , Sweeming Pool</p>
-                                    <div class="p-amount">
-                                        <span>$190</span>
-                                        <span class="count">Per Night</span>
+                    <div class="room-list">
+                        <div class="row">
+                            <div class="col-md-5 col-sm-6">
+                                <a href="#"><img src="/Content/img/room/14.jpg" alt=""></a>
+                            </div>
+                            <div class="col-md-7 col-sm-6">
+                                <div class="room-list-text">
+                                    <h3><a href="#">Royal Suit</a></h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod hytt tempor incididuc utd labore et dolore magna aliqua. Ut enim ad minim yttveniam, quis nostrud exercitation csdd ullamco laboris ed do eiusmod hytt </p>
+                                    <h4>Room Facility</h4>
+                                    <div class="room-service">
+                                        <p>Breakfast Include , Free wi-fi , Private Balcony , Free Newspaper , Full AC, Beach View , Sweeming Pool</p>
+                                        <div class="p-amount">
+                                            <span>$130</span>
+                                            <span class="count">Per Night</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="room-list">
-                    <div class="row">
-                        <div class="col-md-5 col-sm-6">
-                            <a href="#"><img src="/Content/img/room/14.jpg" alt=""></a>
-                        </div>
-                        <div class="col-md-7 col-sm-6">
-                            <div class="room-list-text">
-                                <h3><a href="#">Royal Suit</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod hytt tempor incididuc utd labore et dolore magna aliqua. Ut enim ad minim yttveniam, quis nostrud exercitation csdd ullamco laboris  ed do eiusmod hytt </p>
-                                <h4>Room Facility</h4>
-                                <div class="room-service">
-                                    <p>Breakfast Include , Free wi-fi , Private Balcony , Free Newspaper , Full AC, Beach View , Sweeming Pool</p>
-                                    <div class="p-amount">
-                                        <span>$130</span>
-                                        <span class="count">Per Night</span>
+                    <div class="room-list">
+                        <div class="row">
+                            <div class="col-md-5 col-sm-6">
+                                <a href="#"><img src="/Content/img/room/15.jpg" alt=""></a>
+                            </div>
+                            <div class="col-md-7 col-sm-6">
+                                <div class="room-list-text">
+                                    <h3><a href="#">Single Room</a></h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod hytt tempor incididuc utd labore et dolore magna aliqua. Ut enim ad minim yttveniam, quis nostrud exercitation csdd ullamco laboris ed do eiusmod hytt </p>
+                                    <h4>Room Facility</h4>
+                                    <div class="room-service">
+                                        <p>Breakfast Include , Free wi-fi , Private Balcony , Free Newspaper , Full AC, Beach View , Sweeming Pool</p>
+                                        <div class="p-amount">
+                                            <span>$140</span>
+                                            <span class="count">Per Night</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="room-list">
-                    <div class="row">
-                        <div class="col-md-5 col-sm-6">
-                            <a href="#"><img src="/Content/img/room/15.jpg" alt=""></a>
-                        </div>
-                        <div class="col-md-7 col-sm-6">
-                            <div class="room-list-text">
-                                <h3><a href="#">Single Room</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod hytt tempor incididuc utd labore et dolore magna aliqua. Ut enim ad minim yttveniam, quis nostrud exercitation csdd ullamco laboris  ed do eiusmod hytt </p>
-                                <h4>Room Facility</h4>
-                                <div class="room-service">
-                                    <p>Breakfast Include , Free wi-fi , Private Balcony , Free Newspaper , Full AC, Beach View , Sweeming Pool</p>
-                                    <div class="p-amount">
-                                        <span>$140</span>
-                                        <span class="count">Per Night</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12 fix">
-                <div class="pagination-content text-center">
-                    <ul class="pagination">
-                        <li><a href="#">1</a></li>
-                        <li class="active"><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                    </ul>
-                </div>
+                    </div>*@
+                <!-- #endregion -->
             </div>
         </div>
     </div>
 </section>
 <!-- Room Area End -->
-

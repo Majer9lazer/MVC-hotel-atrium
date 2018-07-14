@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using HotelAtr.DAL.Model;
@@ -13,6 +16,7 @@ namespace Hotel.Atr.Admin.Controllers
         // GET: Room
         public ActionResult Index(string message = "")
         {
+
             ViewBag.Message = message;
             return View(db.Rooms.ToList());
 
@@ -33,17 +37,33 @@ namespace Hotel.Atr.Admin.Controllers
                 if (ServiceRoom.AddRoom(room))
                     return RedirectToAction("Index", "Room");
 
-         
-            return RedirectToAction("Index", "Room", new {mwssage = "Данные пришли пустымиЫ."});
+
+            return RedirectToAction("Index", "Room", new { mwssage = "Данные пришли пустымиЫ." });
         }
 
-        public ActionResult EditRoom(int roomId)
+        public async Task<ActionResult> Edit(int? roomId)
         {
-            Room findedRoom = db.Rooms.Find(roomId);
-            if (findedRoom != null)
+            if (roomId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Room room = await db.Rooms.FindAsync(roomId);
+            if (room == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewData["RoomTypeId"] = new SelectList(db.RoomTypes, "RoomTypeId", "Name");
+            return View(room);
+        }
+        public async Task<ActionResult> EditRoom([Bind(Include = "RoomId,RoomTypeId,Square,MaxPersons,IsFreeWifi,IsPrivateBalcony,IsFullAC,Floor,HasTV,IsBeachView")] Room room)
+        {
+            if (ModelState.IsValid)
             {
                 try
                 {
+                    db.Entry(room).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
                     return RedirectToAction("Index", "Room", new { message = "Данные успешно изменены." });
                 }
                 catch (Exception e)
@@ -52,7 +72,7 @@ namespace Hotel.Atr.Admin.Controllers
                 }
             }
 
-            return RedirectToAction("Index", "Room", new { message = "Данные пришли пустыми." });
+            return View("Edit", room);
 
         }
         public ActionResult DeleteRoom(int roomId)
@@ -62,6 +82,19 @@ namespace Hotel.Atr.Admin.Controllers
                 return RedirectToAction("Index", "Room", new { message = "Good Delete" });
             }
             return RedirectToAction("Index", "Room");
+        }
+        public async Task<ActionResult> Details(int? roomId)
+        {
+            if (roomId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Room room = await db.Rooms.FindAsync(roomId);
+            if (room == null)
+            {
+                return HttpNotFound();
+            }
+            return View(room);
         }
     }
 }

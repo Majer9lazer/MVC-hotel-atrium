@@ -8,7 +8,7 @@
 <h2>Список комнат</h2>
 @if (!string.IsNullOrEmpty(message))
 {
-    <div class="alert alert-info alert-dismissable fade in" role="alert">
+    <div class="alert alert-info alert-dismissable fade show" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <span>@message</span>
     </div>
@@ -17,14 +17,13 @@
 {
     <button class="btn btn-primary" type="submit">Добавить</button>
 }
-<table class="table table-hover">
+<br />
+<table class="table table-hover table-bordered">
     <thead>
         <tr>
             <th>Номер комнаты</th>
             <th>Тип комнаты</th>
             <th>Площадь</th>
-            <th>Кол-во человек</th>
-            <th>Этаж</th>
             <th></th>
         </tr>
     </thead>
@@ -33,34 +32,25 @@
         {
             <tr>
                 <td>
-                    @*<a href="@Url.Action("EditRoom", "Room",new{roomId=room.RoomId})" class="btn btn-info disabled">
-                        Изиенить
-                    </a>*@
-                        <span class="badge">
-                            @room.RoomId
-                        </span>
-                    <span class="badge
-                       @if (!room.IsFreeWifi)
-                       {
-                           @:badge-danger
-
-                       }
-                       else
-                       {
-                           @:badge-success
-
-                       }">WiFi</span>
+                    <span class="badge">
+                        @room.RoomId
+                    </span>
                 </td>
                 <td>@room.RoomType.Name</td>
                 <td>@room.Square</td>
-                <td>@room.MaxPersons</td>
-                <td>@room.Floor</td>
-                <td>
-                    <a href="@Url.Action("DeleteRoom", "Room", new {roomId = room.RoomId})" class="btn btn-danger">
-                        Удалить
-                    </a>
-                    
+                <td class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group mr-2">
+                        @Html.ActionLink("Изменить", "Edit", "Room", new { roomId = room.RoomId }, new { @class = "btn btn-primary" })
+                    </div>
+                    <div class="btn-group mr-2">
+                        @Html.ActionLink("Посмотреть детали", "Details", "Room", new { roomId = room.RoomId }, new { @class = "btn btn-info" })
+                    </div>
+                    <div class="btn-group">
+                        @Html.ActionLink("Удалить", "DeleteRoom", "Room", new { roomId = room.RoomId }, new { @class = "btn btn-danger" })
+                    </div>
                 </td>
+
+
             </tr>
         }
     </tbody>
