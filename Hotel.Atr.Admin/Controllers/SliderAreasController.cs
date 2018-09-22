@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Hotel.Atr.Web.Models.Model;
-using HotelAtr.DAL.Model;
+//using HotelAtr.DAL.Model;
 
 namespace Hotel.Atr.Admin.Controllers
 {

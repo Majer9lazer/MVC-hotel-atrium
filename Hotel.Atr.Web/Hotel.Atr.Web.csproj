@@ -490,12 +490,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HotelAtr.DAL\HotelAtr.DAL.csproj">
-      <Project>{A3E6165D-F730-497B-9B91-00DF37B98A7C}</Project>
-      <Name>HotelAtr.DAL</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>

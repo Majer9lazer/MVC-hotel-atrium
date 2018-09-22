@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Hotel.Atr.Web.Models;
 using Hotel.Atr.Web.Models.Model;
-using HotelAtr.DAL.Model;
+//using HotelAtr.DAL.Model;
 
 namespace Hotel.Atr.Web.Controllers
 {

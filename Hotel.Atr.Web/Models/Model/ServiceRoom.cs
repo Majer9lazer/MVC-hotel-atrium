@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Hotel.Atr.Web.Models.Model;
 
-namespace HotelAtr.DAL.Model
+namespace Hotel.Atr.Web.Models.Model
 {
     public class ServiceRoom
     {

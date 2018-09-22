@@ -1,5 +1,7 @@
-﻿@using HotelAtr.DAL.Model
-@model IEnumerable<HotelAtr.DAL.Model.RoomType>
+﻿
+@*@using HotelAtr.DAL.Model*@
+@using Hotel.Atr.Web.Models.Model
+@model IEnumerable<Hotel.Atr.Web.Models.Model.RoomType>
 @{
     string path = new DirectoryInfo(Server.MapPath("~/Content/img/room")).FullName;
     DirectoryInfo info = new DirectoryInfo(path);

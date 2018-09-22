@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using Hotel.Atr.Web.Models.Model;
-using HotelAtr.DAL.Model;
+//using HotelAtr.DAL.Model;
 
 namespace Hotel.Atr.Web.Controllers
 {
@@ -19,17 +15,17 @@ namespace Hotel.Atr.Web.Controllers
             return View(_dbAtrEntities.Rooms);
         }
 
-        public async Task<ActionResult> RoomDetails(int? roomId)
+        public  ActionResult RoomDetails(int? roomId)
         {
             if (roomId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Room findedElement = await _dbAtrEntities.Rooms.FindAsync(roomId);
-            if (findedElement == null)
+            Room foundElement = _dbAtrEntities.Rooms.Find(roomId);
+            if (foundElement == null)
                 return HttpNotFound();
-            return View(findedElement);
+            return View(foundElement);
         }
     }
 }
