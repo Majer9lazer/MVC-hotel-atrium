@@ -51,14 +51,64 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\HotelAtrEntity.Context.cs">
+      <DependentUpon>HotelAtrEntity.Context.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Model\HotelAtrEntity.cs">
+      <DependentUpon>HotelAtrEntity.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Model\HotelAtrEntity.Designer.cs">
+      <DependentUpon>HotelAtrEntity.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Model\Room.cs">
+      <DependentUpon>HotelAtrEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\RoomType.cs">
+      <DependentUpon>HotelAtrEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Service.cs">
+      <DependentUpon>HotelAtrEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ServiceRoom.cs" />
+    <Compile Include="Model\SliderArea.cs">
+      <DependentUpon>HotelAtrEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <None Include="Model\HotelAtrEntity.edmx.diagram">
+      <DependentUpon>HotelAtrEntity.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Model\HotelAtrEntity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HotelAtrEntity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\HotelAtrEntity.Context.tt">
+      <DependentUpon>HotelAtrEntity.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HotelAtrEntity.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\HotelAtrEntity.edmx.sql" />
+    <Content Include="Model\HotelAtrEntity.tt">
+      <DependentUpon>HotelAtrEntity.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HotelAtrEntity.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
