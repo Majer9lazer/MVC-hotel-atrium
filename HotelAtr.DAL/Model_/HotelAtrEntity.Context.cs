@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HotelAtr.DAL.Model
+namespace HotelAtr.DAL.Model_
 {
     using System;
     using System.Data.Entity;

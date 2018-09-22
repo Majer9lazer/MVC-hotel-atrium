@@ -7,17 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HotelAtr.DAL.Model
+namespace HotelAtr.DAL.Model_
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Service
+    public partial class SliderArea
     {
-        public int ServiceId { get; set; }
-        public string ServiceName { get; set; }
-        public string ServiceDescription { get; set; }
-        public string ServiceIconPath { get; set; }
-        public string ServiceImagePath { get; set; }
+        public int SliderAreaId { get; set; }
+        public string Header { get; set; }
+        public string Description { get; set; }
+        public string Url { get; set; }
+        public string PathImg { get; set; }
     }
 }

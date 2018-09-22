@@ -51,39 +51,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\HotelAtrEntity.Context.cs">
+    <Compile Include="Model_\HotelAtrEntity.Context.cs">
       <DependentUpon>HotelAtrEntity.Context.tt</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="Model\HotelAtrEntity.cs">
+    <Compile Include="Model_\HotelAtrEntity.cs">
       <DependentUpon>HotelAtrEntity.tt</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="Model\HotelAtrEntity.Designer.cs">
+    <Compile Include="Model_\HotelAtrEntity.Designer.cs">
       <DependentUpon>HotelAtrEntity.edmx</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="Model\Room.cs">
+    <Compile Include="Model_\Room.cs">
       <DependentUpon>HotelAtrEntity.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\RoomType.cs">
+    <Compile Include="Model_\RoomType.cs">
       <DependentUpon>HotelAtrEntity.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Service.cs">
+    <Compile Include="Model_\Service.cs">
       <DependentUpon>HotelAtrEntity.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\ServiceRoom.cs" />
-    <Compile Include="Model\SliderArea.cs">
+    <Compile Include="Model_\ServiceRoom.cs" />
+    <Compile Include="Model_\SliderArea.cs">
       <DependentUpon>HotelAtrEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="Model\HotelAtrEntity.edmx.diagram">
+    <None Include="Model_\HotelAtrEntity.edmx.diagram">
       <DependentUpon>HotelAtrEntity.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -92,19 +92,19 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Model\HotelAtrEntity.edmx">
+    <EntityDeploy Include="Model_\HotelAtrEntity.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>HotelAtrEntity.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\HotelAtrEntity.Context.tt">
+    <Content Include="Model_\HotelAtrEntity.Context.tt">
       <DependentUpon>HotelAtrEntity.edmx</DependentUpon>
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>HotelAtrEntity.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model\HotelAtrEntity.edmx.sql" />
-    <Content Include="Model\HotelAtrEntity.tt">
+    <Content Include="Model_\HotelAtrEntity.edmx.sql" />
+    <Content Include="Model_\HotelAtrEntity.tt">
       <DependentUpon>HotelAtrEntity.edmx</DependentUpon>
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>HotelAtrEntity.cs</LastGenOutput>
