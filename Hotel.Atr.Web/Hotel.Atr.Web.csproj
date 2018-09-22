@@ -207,6 +207,34 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LayoutModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Model\HotelAtrEntity.Context.cs">
+      <DependentUpon>HotelAtrEntity.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\Model\HotelAtrEntity.cs">
+      <DependentUpon>HotelAtrEntity.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\Model\HotelAtrEntity.Designer.cs">
+      <DependentUpon>HotelAtrEntity.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\Model\Room.cs">
+      <DependentUpon>HotelAtrEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model\RoomType.cs">
+      <DependentUpon>HotelAtrEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model\Service.cs">
+      <DependentUpon>HotelAtrEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model\ServiceRoom.cs" />
+    <Compile Include="Models\Model\SliderArea.cs">
+      <DependentUpon>HotelAtrEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -259,14 +287,8 @@
     <Content Include="Content\img\icon\conference.png" />
     <Content Include="Content\img\icon\link-hover.png" />
     <Content Include="Content\img\icon\link.png" />
-    <Content Include="Content\img\icon\restaurent-hover.png" />
-    <Content Include="Content\img\icon\restaurent.png" />
     <Content Include="Content\img\icon\search-hover.png" />
     <Content Include="Content\img\icon\search.png" />
-    <Content Include="Content\img\icon\spa-hover.png" />
-    <Content Include="Content\img\icon\spa.png" />
-    <Content Include="Content\img\icon\swim-hover.png" />
-    <Content Include="Content\img\icon\swim.png" />
     <Content Include="Content\img\location\1.jpg" />
     <Content Include="Content\img\location\2.jpg" />
     <Content Include="Content\img\location\3.jpg" />
@@ -290,6 +312,7 @@
     <Content Include="Content\img\room\7.jpg" />
     <Content Include="Content\img\room\8.jpg" />
     <Content Include="Content\img\room\9.jpg" />
+    <Content Include="Content\img\room\Kok-tobe-cars.jpeg" />
     <Content Include="Content\img\room\l-1.jpg" />
     <Content Include="Content\img\room\l-2.jpg" />
     <Content Include="Content\img\room\l-3.jpg" />
@@ -300,6 +323,7 @@
     <Content Include="Content\img\room\s-3.jpg" />
     <Content Include="Content\img\room\s-4.jpg" />
     <Content Include="Content\img\room\s-5.jpg" />
+    <Content Include="Content\img\room\Two-bed-with-tea-cup.jpg" />
     <Content Include="Content\img\service\restaurent-hover.png" />
     <Content Include="Content\img\service\restaurent.png" />
     <Content Include="Content\img\service\spa-hover.png" />
@@ -333,6 +357,17 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Model\HotelAtrEntity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HotelAtrEntity.edmx</DependentUpon>
+      <LastGenOutput>HotelAtrEntity.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model\HotelAtrEntity.edmx.sql" />
+    <Content Include="Models\Model\HotelAtrEntity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HotelAtrEntity.edmx</DependentUpon>
+      <LastGenOutput>HotelAtrEntity.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\ajax-mail.js" />
@@ -341,6 +376,14 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EntityDeploy Include="Models\Model\HotelAtrEntity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HotelAtrEntity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model\HotelAtrEntity.edmx.diagram">
+      <DependentUpon>HotelAtrEntity.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\HotelAtrWeb20180922101741 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\imagesloaded.pkgd.min.js" />
     <Content Include="Scripts\isotope.pkgd.min.js" />
@@ -447,6 +490,9 @@
       <Project>{A3E6165D-F730-497B-9B91-00DF37B98A7C}</Project>
       <Name>HotelAtr.DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
