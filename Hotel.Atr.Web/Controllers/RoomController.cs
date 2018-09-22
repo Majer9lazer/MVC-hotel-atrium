@@ -15,7 +15,7 @@ namespace Hotel.Atr.Web.Controllers
             return View(_dbAtrEntities.Rooms);
         }
 
-        public  ActionResult RoomDetails(int? roomId)
+        public ActionResult RoomDetails(int? roomId)
         {
             if (roomId == null)
             {
@@ -24,8 +24,12 @@ namespace Hotel.Atr.Web.Controllers
 
             Room foundElement = _dbAtrEntities.Rooms.Find(roomId);
             if (foundElement == null)
+            {
+                
                 return HttpNotFound();
-            return View(foundElement);
+            }
+
+            return View("RoomDetails", foundElement);
         }
     }
 }
