@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using Hotel.Atr.Web.Models.Model;
 using HotelAtr.DAL.Model;
 
 namespace Hotel.Atr.Web.Models

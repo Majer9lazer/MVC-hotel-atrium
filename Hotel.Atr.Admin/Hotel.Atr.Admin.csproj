@@ -346,6 +346,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Hotel.Atr.Web\Hotel.Atr.Web.csproj">
+      <Project>{D5D1A085-A034-4A10-BB47-02EC7BF6FAFA}</Project>
+      <Name>Hotel.Atr.Web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HotelAtr.DAL\HotelAtr.DAL.csproj">
       <Project>{a3e6165d-f730-497b-9b91-00df37b98a7c}</Project>
       <Name>HotelAtr.DAL</Name>

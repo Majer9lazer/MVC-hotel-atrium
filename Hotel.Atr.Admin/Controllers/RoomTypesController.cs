@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using HotelAtr.DAL.Model;
+using Hotel.Atr.Web.Models.Model;
 using WebGrease.Activities;
 
 namespace Hotel.Atr.Admin.Controllers
